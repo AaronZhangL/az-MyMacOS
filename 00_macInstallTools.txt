@@ -1,0 +1,24 @@
+1. Install brew
+http://brew.sh
+Install Homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+
+2. Install wget by brew
+brew install wget
+
+3. Install OH MY ZSH
+https://github.com/robbyrussell/oh-my-zsh
+
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)”
+
+4、autojump：zsh 和 autojump 的组合形成了 zsh 下最强悍的插件，今天我们主要说说这货。
+首先安装autojump，如果你用 Mac，可以使用 brew 安装：
+brew install autojump
+
+最后把以下代码加入.zshrc：
+在.zshrc里面要加autojump的plugin
+
+5. Install sublime and package 
+https://packagecontrol.io/installation#st3
+
+
