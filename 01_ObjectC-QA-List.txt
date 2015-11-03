@@ -1,0 +1,13 @@
+Q1.
+“Application windows are expected to have a root view controller at the end of application launch” error when running a project with Xcode 7, iOS 9
+
+A1.
+From your error message:
+
+Application windows are expected to have a root view controller at the end of application launch
+How old is this "old" project? If it's more than a few years, do you still have:
+
+[window addSubview:viewController.view];
+You should instead replace it with:
+
+[window setRootViewController:viewController];
