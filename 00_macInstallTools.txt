@@ -46,3 +46,12 @@ Java for OS X 2015-001 installs the legacy Java 6 runtime for OS X 10.11 El Capi
 This package is exclusively intended for support of legacy software and installs the same deprecated version of Java 6 included in the 2014-001 and 2013-005 releases.
 
 Quit any Java applications before installing this update.
+
+7.3 Format Object-C code
+http://justsee.iteye.com/blog/1886685
+http://514979423.iteye.com/blog/1770723
+如果想要完成完备的代码格式化，得要借助Uncrustify这样的工具。更进一步，我们用Automate配置一个针对Text的Service，再加上快捷键，就可以在Xcode里间接实现和Eclipse同样效果的代码格式化功能了。 
+首先安装Uncrustify工具。安装的方法很多，推荐用Homebrew来安装。如果机器上没有Homebrew，先用这条命令安装： 
+/usr/bin/ruby -e "$(curl -fksSL http://u.aodaren.com/homebrew)" 
+安装好Homebrew后，用这条命令安装Uncrustify： 
+brew install uncrustify 

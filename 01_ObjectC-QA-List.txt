@@ -1,6 +1,9 @@
 Q1.
 “Application windows are expected to have a root view controller at the end of application launch” error when running a project with Xcode 7, iOS 9
 
+Thread1 signal GIGABRT
+
+Live2D_Simple[10088:707104] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Application windows are expected to have a root view controller at the end of application launch'
 A1.
 From your error message:
 
@@ -11,3 +14,86 @@ How old is this "old" project? If it's more than a few years, do you still have:
 You should instead replace it with:
 
 [window setRootViewController:viewController];
+
+Q2.
+UIAccelerometer is deprecated first deprecated in ios 5.0 UIAccelerometer has been replaced by the CoreMotion framework
+
+A2.
+iOS7中，原来在项目中，使用的筛子振动的类是UIAccelerometer。运行iOS7后，会报一个警告。
+意思大概是说UIAccelerometer在iOS5.0之后就被CoreMotion framework框架给取代了。
+我是这样解决的：用CoreMotion framework框架来替代，
+1，导入
+#import <CoreMotion/CoreMotion.h>
+2，并声明为全局变量（或者属性），
+CMMotionManager *_manager;
+3，然后在初始化的时候生成，并设置更新频率，启动更新
+_manager = [[CMMotionManager alloc]init];
+_manager.accelerometerUpdateInterval=1.0/60.0;
+[_manager.startAccelerometerUpdates];
+4，启动一个定时器，时刻检测振动状态
+[NSTimer scheduledTimerWithTimeInterval:1.0/60.0target:selfselector:@selector(shackAction) userInfo:nilrepeats:YES];
+5,在定时器方法里，时刻判断加速计的x,y,z的便宜，超过一定程度即为筛子振动。
+if (fabsf(_manager.accelerometerData.acceleration.x) > 2.0 || fabsf(_manager.accelerometerData.acceleration.y) > 2.0 || fabsf(_manager.accelerometerData.acceleration.z) > 2.0)
+6,当你不需要的时候，记得停止更新。
+[_manager stopAccelerometerUpdates];
+7，这样即可解决。
+
+Q3.
+_manager.startAccelerometerUpdates Expected identifier
+
+A3.
+http://www.behindthecode.net/wordpress/ios-game-development-answers-how-do-i-access-accelerometer-data/
+
+Q4.
+Objective-C deciarations may only appear in global scope.
+
+A4.
+?
+
+Q5.
+libLive2D.a missing required architecture x86_64
+
+A5.
+http://stackoverflow.com/questions/26552855/xcode-6-1-missing-required-architecture-x86-64-in-file
+The first thing you should make sure is that your static library has all architectures. When you do a lipo -info myStaticLibrary.a on terminal - you should see armv7 armv7s i386 x86_64 arm64 architectures for your fat binary.
+
+~/03_workspace/06_fukuokaDemo/Source/Aoi/AOI3/Live2D/lib/Debug-iphonesimulator on  master! ⌚ 18:07:57
+$ lipo -info libLive2D.a
+input file libLive2D.a is not a fat file
+Non-fat file: libLive2D.a is architecture: i386
+
+Member access into incomplete type L2DViewMatrix
+
+The file  couldn’t be opened because you don’t have permission to view it.
+
+Q6.
+directory not found for option '-F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.1.sdk/Developer/Library/Frameworks'
+
+A6.
+http://www.cnblogs.com/YouXianMing/p/4826761.html
+
+Q7.
+ld: can't map file, errno=22 file '/Users/aaronzhang/Library/Developer/Xcode/DerivedData/Aoi-gmiletdkmbkrbganrvyacuatkgol/Build/Products/Debug-iphonesimulator/Aoi.app/Aoi' for architecture i386
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+A7.
+
+Q8.
+The file “Aoi” couldn’t be opened because you don’t have permission to view it.
+
+A8.
+
+Q9.
+This certificate has been revoked
+
+A9.
+
+Q10.
+/Users/aaronzhang/Library/Developer/Xcode/DerivedData/Aoi-brcxkecsrcowzgazwhpgsgmvkign/Build/Products/Debug-iphoneos/A app: Is a directory Command /usr/bin/codesign failed with exit code 1
+
+A10.
+Is a directory
+Command /usr/bin/codesign failed with exit code 1
+
+
+Is a directory Command /usr/bin/codesign failed with exit code 1
