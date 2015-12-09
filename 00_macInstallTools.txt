@@ -55,3 +55,8 @@ http://514979423.iteye.com/blog/1770723
 /usr/bin/ruby -e "$(curl -fksSL http://u.aodaren.com/homebrew)" 
 安装好Homebrew后，用这条命令安装Uncrustify： 
 brew install uncrustify 
+
+7.4 Github .gitignore file config.
+https://github.com/github/gitignore/blob/master/Objective-C.gitignore
+https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
+
