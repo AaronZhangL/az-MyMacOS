@@ -60,3 +60,5 @@ brew install uncrustify
 https://github.com/github/gitignore/blob/master/Objective-C.gitignore
 https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
 
+8. Install iterm2
+https://www.iterm2.com
