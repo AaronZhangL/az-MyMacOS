@@ -65,3 +65,6 @@ https://www.iterm2.com
 
 9. install pip
 sudo easy_install pip
+
+10. Install Django
+sudo pip install Django
