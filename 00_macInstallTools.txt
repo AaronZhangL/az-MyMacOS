@@ -68,3 +68,29 @@ sudo easy_install pip
 
 10. Install Django
 sudo pip install Django
+
+11. Install Subvision
+brew options subversion
+#=--universal
+#=	Build a universal binary
+#=--with-gpg-agent
+#=	Build with support for GPG Agent
+#=--with-java
+#=	Build Java bindings
+#=--with-perl
+#=	Build Perl bindings
+#=--with-python
+#=	Build with python support
+#=--with-ruby
+#=	Build Ruby bindings
+#=
+#=
+
+brew install --universal subversion
+
+svn
+#= Type 'svn help' for usage.
+
+svn --version
+#= svn, version 1.7.20 (r1667490)
+#=    compiled Nov 11 2015, 16:49:02
